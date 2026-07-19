@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hi html viewer</title>
+    <meta name="darkreader-lock">
+    <meta name="robots" content="noindex,nofollow">
+    <link type="text/css" rel="stylesheet" href="src/theme_config.css">
+    <link type="text/css" rel="stylesheet" href="src/main_ui.css">
+    <script type="text/javascript" src="src/button.js"></script>
+    <svg style="display: none"><filter id="glass_side"><feTurbulence type="turbulence" baseFrequency="0.00225" numOctaves="2" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="77" /></filter></svg>
+</head>
+<body>
+<header id="hi_html_viewer_side" role="banner">
+    <div id="hi_html_viewer_top_side">
+        <a></a>
+        <button id="hi_html_viewer_left_button" onclick="hi_html_viewer_left()" title="返回">←</button>
+        <button id="hi_html_viewer_right_button" onclick="hi_html_viewer_right()" title="前进">→</button>
+        <button id="hi_html_viewer_refresh_button" onclick="hi_html_viewer_refreshFrame()" title="刷新">⟳</button>
+        <input type="text" id="hi_html_viewer_text_url" title="输入URL"></input>
+        <button id="hi_html_viewer_menu_button" onclick="hi_html_viewer_menu_show()" title="菜单">☰</button>
+        <button id="hi_html_viewer_full-screen_button" onclick="hi_html_viewer_menu_full_screen()" title="全屏">⛶</button>
+        <br>
+    </div>
+    <div id="hi_html_viewer_menu" style="display: none;">
+        <div>
+            <button id="hi_html_viewer_open-file_button" title="打开文件" onclick="document.getElementById('hi_html_viewer_open_file_input').click()">打开文件</button>
+            <button id="hi_html_viewer_clean_button" title="清空内容" onclick="hi_html_viewer_clean()">清空内容</button>
+            <button id="hi_html_viewer_url_button" title="输入URL" onclick="hi_html_viewer_url()">输入URL</button>
+            <button id="hi_html_viewer_copy-url_button" title="复制URL" onclick="hi_html_viewer_copy_url()">复制URL</button>
+            <button id="hi_html_viewer_copy-file_button" title="拷贝文件" onclick="hi_html_viewer_copy_file()">拷贝文件</button>
+            <button id="hi_html_viewer_input-code_button" title="输入代码" onclick="hi_html_viewer_input_code()">输入代码</button>
+            <input type="file" id="hi_html_viewer_open_file_input" style="display: none;" onchange="hi_html_viewer_open_file(this)">
+        </div>
+        <br>
+        <div id="hi_html_viewer_about">
+            <h3>hi html viewer (new)</h3>
+            <p>这是一个比较简单的html查看器</p>
+            <p>版本:v1.0</p>
+            <button href="https://github.com/oneblockh/hi_html_viewer" title="访问仓库">访问仓库</button>
+        </div>
+    </div>
+</header>
+<iframe id="hi_html_viewer_main_preview" title="hi html viewer" frameBorder="0" width="100%" height="100%" sandbox="allow-scripts allow-modals allow-forms allow-top-navigation-by-user-activation" src="data:text/html;text," role="main"></iframe>
+</body>
+</html>

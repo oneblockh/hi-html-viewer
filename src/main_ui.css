@@ -1,0 +1,72 @@
+html{
+    height: 97%;
+}
+
+body{
+    background-color: var(--hi_html_viewer-backgrund-color);
+    color:var(--hi_html_viewer-main-color);
+    height: 100%;
+}
+
+#hi_html_viewer_main_preview{
+    background-color: rgba(150,150,150,0.5);
+    border-radius: 11px;
+    border:none;
+}
+
+#hi_html_viewer_side{
+    position: fixed;
+    z-index:123456789;
+    left: 0px;
+    right: 0px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 9px;
+    width: 500px;
+}
+
+#hi_html_viewer_top_side{
+    background-color: var(--hi_html_viewer-glass-color);
+    height: 25px;
+    backdrop-filter:blur(2.5px) saturate(125%) url(#glass_side);
+    box-shadow: var(--hi_html_viewer-line-shadow);
+    border-radius: 25px;
+    padding: 12px 19px;
+    gap: 5px;
+    display: flex;
+}
+
+#hi_html_viewer_menu{
+    background-color: var(--hi_html_viewer-glass-color);
+    backdrop-filter:blur(2.5px) saturate(125%) url(#glass_side);
+    box-shadow: var(--hi_html_viewer-line-shadow);
+    border-radius: 25px;
+    padding: 12px 19px;
+    margin-top: 9px;
+}
+
+#hi_html_viewer_text_url{
+    flex:1;
+    border-radius: 25px;
+    border: 2px solid transparent;
+    background-color: transparent;
+    box-shadow: var(--hi_html_viewer-line-shadow);
+    color:var(--hi_html_viewer-main-color);
+}
+
+#hi_html_viewer_top_side button,#hi_html_viewer_menu button{
+    border-radius: 25px;
+    border: 2px solid transparent;
+    background-color: transparent;
+    box-shadow: var(--hi_html_viewer-line-shadow);
+    color:var(--hi_html_viewer-main-color);
+}
+
+#hi_html_viewer_top_side button:hover,#hi_html_viewer_menu button:hover,#hi_html_viewer_text_url:hover{
+    box-shadow: 0 0 5px 2px rgba(199,199,199,0.25);
+    border:2px solid var(--hi_html_viewer-main-color);
+}
+
+#hi_html_viewer_about{
+    border-top: 1px solid var(--hi_html_viewer-main-color);
+}
