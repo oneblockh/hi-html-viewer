@@ -53,7 +53,7 @@ function hi_html_viewer_right(){
 }
 
 //刷新框架
-function hi_html_viewer_refreshFrame() {
+function hi_html_viewer_refresh_frame() {
     const iframe = document.getElementById('hi_html_viewer_main_preview');
     iframe.contentWindow.location.replace(iframe.src);
 }
@@ -108,8 +108,8 @@ function hi_html_viewer_open_file(open_file){
   const file = open_file.files[0];
   if (!file) return;
   const open_file_read = new FileReader();
-  open_file_read.onload = function(event) {
-    let url = "data:text/html;charset=utf-8;base64,"+base64(event.target.result);
+  open_file_read.onload = function(file_text) {
+    let url = "data:text/html;charset=utf-8;base64,"+base64(file_text.target.result);
     url_list.slice(0,url_list_number+1);
     url_list_number=url_list.length;
     url_list_number=url_list_number+=1
@@ -164,15 +164,16 @@ function hi_html_viewer_copy_file(){
 
 function hi_html_viewer_input_code(){
   const iframe = document.getElementById('hi_html_viewer_main_preview');
-  const input_url  = document.getElementById('hi_html_viewer_text_url');
-  let url = "data:text/html;charset=utf-8;base64,"+base64(prompt("请输入html代码",""));
-  if (url !== null) {
+  const input_code = document.getElementById('hi_html_viewer_text_url');
+  let default_code_config = "data:text/html;charset=utf-8;base64,"
+  let url = default_code_config+base64(prompt("请输入html代码",""));
+  if (url !== default_code_config+"bnVsbA==") {
     url_list.slice(0,url_list_number+1);
     url_list_number=url_list.length;
     url_list_number=url_list_number+=1
     url_list.push(url);
     iframe.src = url;
-    input_url.value =url;
+    input_code.value =url;
   }
 }
 
@@ -182,5 +183,5 @@ function hi_html_viewer_input_code(){
 //这一个函数可以减少一些代码过长打不开的问题
 function base64(str) {
   const bytes = new TextEncoder().encode(str);
-  return btoa(Array.from(bytes, b => String.fromCharCode(b)).join(''));
+  return btoa(Array.from(bytes, data_file => String.fromCharCode(data_file)).join(''));
 }

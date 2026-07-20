@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>hi html viewer</title>
     <meta name="darkreader-lock">
     <meta name="robots" content="noindex,nofollow">
@@ -17,14 +17,14 @@
         <a></a>
         <button id="hi_html_viewer_left_button" onclick="hi_html_viewer_left()" title="返回">←</button>
         <button id="hi_html_viewer_right_button" onclick="hi_html_viewer_right()" title="前进">→</button>
-        <button id="hi_html_viewer_refresh_button" onclick="hi_html_viewer_refreshFrame()" title="刷新">⟳</button>
+        <button id="hi_html_viewer_refresh_button" onclick="hi_html_viewer_refresh_frame()" title="刷新">⟳</button>
         <input type="text" id="hi_html_viewer_text_url" title="输入URL"></input>
         <button id="hi_html_viewer_menu_button" onclick="hi_html_viewer_menu_show()" title="菜单">☰</button>
         <button id="hi_html_viewer_full-screen_button" onclick="hi_html_viewer_menu_full_screen()" title="全屏">⛶</button>
         <br>
     </div>
     <div id="hi_html_viewer_menu" style="display: none;">
-        <div>
+        <div id="hi_html_viewer_menu_side">
             <button id="hi_html_viewer_open-file_button" title="打开文件" onclick="document.getElementById('hi_html_viewer_open_file_input').click()">打开文件</button>
             <button id="hi_html_viewer_clean_button" title="清空内容" onclick="hi_html_viewer_clean()">清空内容</button>
             <button id="hi_html_viewer_url_button" title="输入URL" onclick="hi_html_viewer_url()">输入URL</button>
@@ -37,8 +37,8 @@
         <div id="hi_html_viewer_about">
             <h3>hi html viewer (new)</h3>
             <p>这是一个比较简单的html查看器</p>
-            <p>版本:v1.0</p>
-            <button href="https://github.com/oneblockh/hi_html_viewer" title="访问仓库">访问仓库</button>
+            <p>版本:v1.1</p>
+            <button href="https://github.com/oneblockh/hi-html-viewer" title="访问仓库">访问仓库</button>
         </div>
     </div>
 </header>
