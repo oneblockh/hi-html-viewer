@@ -5,8 +5,8 @@
 //下面两个变量不要删！！！
 //用于返回浏览过的文件或链接
 //这个是来定义变量的,而且还是全局变量.
-url_list = [];
-url_list_number=0;
+hi_html_viewer_url_list = [];
+hi_html_viewer_url_list_number=0;
 
 
 //输入链接(url)
@@ -18,10 +18,10 @@ input_url.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
       let url = input_url.value.trim();
       if (!url) return;
-      url_list.slice(0,url_list_number+1);
-      url_list_number=url_list.length;
-      url_list_number=url_list_number+=1
-      url_list.push(url);
+      hi_html_viewer_url_list.slice(0,hi_html_viewer_url_list_number+1);
+      hi_html_viewer_url_list_number=hi_html_viewer_url_list.length;
+      hi_html_viewer_url_list_number=hi_html_viewer_url_list_number+=1
+      hi_html_viewer_url_list.push(url);
       iframe.src = url;
     }
 });
@@ -31,9 +31,9 @@ input_url.addEventListener('keydown', function (e) {
 function hi_html_viewer_left(){
   const iframe = document.getElementById('hi_html_viewer_main_preview');
   const input_url  = document.getElementById('hi_html_viewer_text_url');
-  if (url_list_number>1){
-    url_list_number=url_list_number-=1;
-    let url = url_list[url_list_number-1];
+  if (hi_html_viewer_url_list_number>1){
+    hi_html_viewer_url_list_number=hi_html_viewer_url_list_number-=1;
+    let url = hi_html_viewer_url_list[hi_html_viewer_url_list_number-1];
     if (!url) return;
     iframe.src = url;
     input_url.value =url
@@ -43,9 +43,9 @@ function hi_html_viewer_left(){
 function hi_html_viewer_right(){
   const iframe = document.getElementById('hi_html_viewer_main_preview');
   const input_url  = document.getElementById('hi_html_viewer_text_url');
-  if (url_list_number<url_list.length){
-    url_list_number=url_list_number+=1;
-    let url = url_list[url_list_number-1];
+  if (hi_html_viewer_url_list_number<hi_html_viewer_url_list.length){
+    hi_html_viewer_url_list_number=hi_html_viewer_url_list_number+=1;
+    let url = hi_html_viewer_url_list[hi_html_viewer_url_list_number-1];
     if (!url) return;
     iframe.src = url;
     input_url.value =url
@@ -109,11 +109,11 @@ function hi_html_viewer_open_file(open_file){
   if (!file) return;
   const open_file_read = new FileReader();
   open_file_read.onload = function(file_text) {
-    let url = "data:text/html;charset=utf-8;base64,"+base64(file_text.target.result);
-    url_list.slice(0,url_list_number+1);
-    url_list_number=url_list.length;
-    url_list_number=url_list_number+=1
-    url_list.push(url);
+    let url = "data:text/html;charset=utf-8;base64,"+hi_html_viewer_base64(file_text.target.result);
+    hi_html_viewer_url_list.slice(0,hi_html_viewer_url_list_number+1);
+    hi_html_viewer_url_list_number=hi_html_viewer_url_list.length;
+    hi_html_viewer_url_list_number=hi_html_viewer_url_list_number+=1
+    hi_html_viewer_url_list.push(url);
     iframe.src = url;
     input_url.value =url;
   }
@@ -122,10 +122,10 @@ function hi_html_viewer_open_file(open_file){
 }
 
 function hi_html_viewer_clean(){
-  //下面这两个变量(url_list)别删!!!
+  //下面这两个变量(hi_html_viewer_url_list)别删!!!
   //下面是两个变量是重置列表
-  url_list = [];
-  url_list_number=0;
+  hi_html_viewer_url_list = [];
+  hi_html_viewer_url_list_number=0;
   const iframe = document.getElementById('hi_html_viewer_main_preview');
   iframe.src = "data:text;text,"
 }
@@ -136,26 +136,26 @@ function hi_html_viewer_url(){
   let url = prompt("请输入URL", "");
   if (url !== null) {
     if (!url) return;
-    url_list.slice(0,url_list_number+1);
-    url_list_number=url_list.length;
-    url_list_number=url_list_number+=1
-    url_list.push(url);
+    hi_html_viewer_url_list.slice(0,hi_html_viewer_url_list_number+1);
+    hi_html_viewer_url_list_number=hi_html_viewer_url_list.length;
+    hi_html_viewer_url_list_number=hi_html_viewer_url_list_number+=1
+    hi_html_viewer_url_list.push(url);
     iframe.src = url;
     input_url.value =url
   }
 }
 
 function hi_html_viewer_copy_url(){
-  if(url_list_number>0){
-    let copy_url=url_list[url_list_number-1];
+  if(hi_html_viewer_url_list_number>0){
+    let copy_url=hi_html_viewer_url_list[hi_html_viewer_url_list_number-1];
     navigator.clipboard.writeText(copy_url);
   }
 }
 
 function hi_html_viewer_copy_file(){
-  if(url_list_number>0){
+  if(hi_html_viewer_url_list_number>0){
     const copy_file = document.createElement('a');
-    copy_file.href = url_list[url_list_number-1];
+    copy_file.href = hi_html_viewer_url_list[hi_html_viewer_url_list_number-1];
     copy_file.download = "copy_file.html";
     copy_file.target = "_blank";
     copy_file.click();
@@ -166,12 +166,12 @@ function hi_html_viewer_input_code(){
   const iframe = document.getElementById('hi_html_viewer_main_preview');
   const input_code = document.getElementById('hi_html_viewer_text_url');
   let default_code_config = "data:text/html;charset=utf-8;base64,"
-  let url = default_code_config+base64(prompt("请输入html代码",""));
+  let url = default_code_config+hi_html_viewer_base64(prompt("请输入html代码",""));
   if (url !== default_code_config+"bnVsbA==") {
-    url_list.slice(0,url_list_number+1);
-    url_list_number=url_list.length;
-    url_list_number=url_list_number+=1
-    url_list.push(url);
+    hi_html_viewer_url_list.slice(0,hi_html_viewer_url_list_number+1);
+    hi_html_viewer_url_list_number=hi_html_viewer_url_list.length;
+    hi_html_viewer_url_list_number=hi_html_viewer_url_list_number+=1
+    hi_html_viewer_url_list.push(url);
     iframe.src = url;
     input_code.value =url;
   }
@@ -181,7 +181,7 @@ function hi_html_viewer_input_code(){
 
 //下面的这个函数别删！！！
 //这一个函数可以减少一些代码过长打不开的问题
-function base64(str) {
+function hi_html_viewer_base64(str) {
   const bytes = new TextEncoder().encode(str);
   return btoa(Array.from(bytes, data_file => String.fromCharCode(data_file)).join(''));
 }

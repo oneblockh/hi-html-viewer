@@ -29,7 +29,7 @@ body{
 #hi_html_viewer_top_side{
     background-color: var(--hi_html_viewer-glass-color);
     height: 25px;
-    backdrop-filter:blur(2.5px) saturate(125%) url(#glass_side);
+    backdrop-filter:blur(1.9px) saturate(125%) url(#glass_side);
     box-shadow: var(--hi_html_viewer-line-shadow);
     border-radius: 25px;
     padding: 12px 19px;
@@ -39,11 +39,33 @@ body{
 
 #hi_html_viewer_menu{
     background-color: var(--hi_html_viewer-glass-color);
-    backdrop-filter:blur(2.5px) saturate(125%) url(#glass_side);
+    backdrop-filter:blur(1.1px) saturate(125%) url(#glass_side);
     box-shadow: var(--hi_html_viewer-line-shadow);
     border-radius: 25px;
     padding: 12px 19px;
     margin-top: 9px;
+    transition: var(--hi_html_viewer-transition-action);
+    animation: hi_html_viewer_menu_open_window 0.19s;
+}
+
+@keyframes hi_html_viewer_menu_open_window{
+    0%{
+        height: 0;
+        padding: 0 19px;
+        backdrop-filter:blur(0);
+        box-shadow: 0 0 0 0;
+        background-color: transparent;
+        margin-top: 5px;
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.5;
+        backdrop-filter:blur(0.3px);
+        margin-top: 8px;
+        padding: 9px 19px;
+        box-shadow: 0 0 0 0;
+    }
+    100%{opacity: 1;}
 }
 
 #hi_html_viewer_text_url{
@@ -53,6 +75,7 @@ body{
     background-color: transparent;
     box-shadow: var(--hi_html_viewer-line-shadow);
     color:var(--hi_html_viewer-main-color);
+    transition: var(--hi_html_viewer-transition-action);
 }
 
 #hi_html_viewer_menu_side{
@@ -67,6 +90,7 @@ body{
     background-color: transparent;
     box-shadow: var(--hi_html_viewer-line-shadow);
     color:var(--hi_html_viewer-main-color);
+    transition:var(--hi_html_viewer-transition-action);
 }
 
 #hi_html_viewer_menu button{
@@ -76,6 +100,8 @@ body{
     box-shadow: var(--hi_html_viewer-line-shadow);
     color:var(--hi_html_viewer-main-color);
     margin-bottom: 3px;
+    padding-bottom: 3px;
+    transition:var(--hi_html_viewer-transition-action);
 }
 
 #hi_html_viewer_top_side button:hover,#hi_html_viewer_menu button:hover,#hi_html_viewer_text_url:hover{
@@ -85,4 +111,5 @@ body{
 
 #hi_html_viewer_about{
     border-top: 1px solid var(--hi_html_viewer-main-color);
+    transition: var(--hi_html_viewer-transition-action);
 }
