@@ -185,3 +185,42 @@ function hi_html_viewer_base64(str) {
   const bytes = new TextEncoder().encode(str);
   return btoa(Array.from(bytes, data_file => String.fromCharCode(data_file)).join(''));
 }
+
+
+
+//这个是边栏拖动,但是可能还有一些bug
+document.addEventListener('DOMContentLoaded', function () {
+  const app_side_top = document.getElementById('hi_html_viewer_side');
+  const app_side_bar = document.getElementById('hi_html_viewer_top_side');
+  let side_x_y=[]
+  let timer, dragging,app_max_width;
+  app_side_bar.onpointerdown = e => {
+    side_x_y[0] = e.clientX;
+    side_x_y[1] = e.clientY;
+    side_x_y[2] = parseFloat(getComputedStyle(app_side_top).left) || 0;
+    side_x_y[3] = parseFloat(getComputedStyle(app_side_top).top) || 0;
+    timer = setTimeout(() => {
+      dragging = true;
+      app_side_bar.setPointerCapture(e.pointerId);
+    }, 300);
+  }
+  app_side_bar.onpointermove = e => {
+      if (!dragging) {
+      if (Math.abs(e.clientX - side_x_y[0]) > 15 || Math.abs(e.clientY - side_x_y[1]) > 15) clearTimeout(timer);
+      return;
+    }
+    const parent = app_side_top.offsetParent || document.documentElement;
+    if (parent.clientWidth <500){
+      app_max_width =0;
+    } else{
+      app_max_width=0-(parent.clientWidth /1.6)-(parent.clientWidth /20)
+    }
+    app_side_top.style.left = Math.max(app_max_width, Math.min(side_x_y[2] + e.clientX - side_x_y[0], parent.clientWidth - app_side_top.offsetWidth)) + 'px';
+    app_side_top.style.top = Math.max(0, Math.min(side_x_y[3] + e.clientY - side_x_y[1], parent.clientHeight - app_side_top.offsetHeight)) + 'px';
+  }
+  app_side_bar.onpointerup = app_side_bar.onpointercancel = () => {
+    clearTimeout(timer);
+    dragging = false;
+  }
+  app_side_bar.oncontextmenu = e => e.preventDefault();
+});
