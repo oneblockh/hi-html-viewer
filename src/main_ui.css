@@ -112,7 +112,33 @@ body{
     border:2px solid var(--hi_html_viewer-main-color);
 }
 
-#hi_html_viewer_about{
+#hi_html_viewer_settings{
+    padding-top: 11px;
+    padding-bottom: 11px;
     border-top: 1px solid var(--hi_html_viewer-main-color);
     transition: var(--hi_html_viewer-transition-action);
+}
+
+#hi_html_viewer_about{
+    background-color: var(--hi_html_viewer-glass-color);
+    color:var(--hi_html_viewer-main-color);
+    border: 1px solid transparent;
+    backdrop-filter:blur(0.3px) saturate(125%) url(#glass_side);
+    border-radius: 19px;
+    box-shadow: var(--hi_html_viewer-line-shadow);
+    transition: var(--hi_html_viewer-transition-action);
+}
+
+#hi_html_viewer_show_utf-8{
+    background-color: transparent;
+    box-shadow: var(--hi_html_viewer-line-shadow);
+    border-radius: 19px;
+    color:var(--hi_html_viewer-main-color);
+    transition:var(--hi_html_viewer-transition-action);
+    padding: 3px;
+    width: 200px;
+}
+
+#hi_html_viewer_show_utf-8 option{
+    color: black;
 }

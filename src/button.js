@@ -102,6 +102,7 @@ function hi_html_viewer_menu_full_screen(element) {
 
 
 
+//菜单栏的功能
 function hi_html_viewer_open_file(open_file){
   const iframe = document.getElementById('hi_html_viewer_main_preview');
   const input_url  = document.getElementById('hi_html_viewer_text_url');
@@ -109,7 +110,9 @@ function hi_html_viewer_open_file(open_file){
   if (!file) return;
   const open_file_read = new FileReader();
   open_file_read.onload = function(file_text) {
-    let url = "data:text/html;charset=utf-8;base64,"+hi_html_viewer_base64(file_text.target.result);
+    let url = "data:text/html;charset=utf-8;base64,"
+    if (hi_html_viewer_show_text_unicode ==0){url = "data:text/html;base64,"}
+    url = url+hi_html_viewer_base64(file_text.target.result);
     hi_html_viewer_url_list.slice(0,hi_html_viewer_url_list_number+1);
     hi_html_viewer_url_list_number=hi_html_viewer_url_list.length;
     hi_html_viewer_url_list_number=hi_html_viewer_url_list_number+=1
@@ -166,7 +169,8 @@ function hi_html_viewer_input_code(){
   const iframe = document.getElementById('hi_html_viewer_main_preview');
   const input_code = document.getElementById('hi_html_viewer_text_url');
   let default_code_config = "data:text/html;charset=utf-8;base64,"
-  let url = default_code_config+hi_html_viewer_base64(prompt("请输入html代码",""));
+  if (hi_html_viewer_show_text_unicode ==0){default_code_config = "data:text/html;base64,"}
+  url = default_code_config+hi_html_viewer_base64(prompt("请输入html代码",""));
   if (url !== default_code_config+"bnVsbA==") {
     hi_html_viewer_url_list.slice(0,hi_html_viewer_url_list_number+1);
     hi_html_viewer_url_list_number=hi_html_viewer_url_list.length;
@@ -184,6 +188,37 @@ function hi_html_viewer_input_code(){
 function hi_html_viewer_base64(str) {
   const bytes = new TextEncoder().encode(str);
   return btoa(Array.from(bytes, data_file => String.fromCharCode(data_file)).join(''));
+}
+
+
+
+//是否强制UTF-8显示
+//下面的变量别删！！！
+hi_html_viewer_show_text_unicode=1
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('hi_html_viewer_show_utf-8').addEventListener('change', function () {
+    const value_option = this.value;
+    if (value_option !== "") {
+    if(value_option =="yes"){
+      hi_html_viewer_show_text_unicode=1
+    } else if(value_option =="no"){
+        hi_html_viewer_show_text_unicode=0
+    }else{
+        hi_html_viewer_show_text_unicode=1
+    }
+    }
+  });
+})
+
+
+//这是关于界面的窗口,一般用于展示版本信息
+function hi_html_viewer_about_show(){
+  const app_about = document.getElementById('hi_html_viewer_about');
+  app_about.showModal();
+}
+function hi_html_viewer_about_hide(){
+  const app_about = document.getElementById('hi_html_viewer_about');
+  app_about.close();
 }
 
 

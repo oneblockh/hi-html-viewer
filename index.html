@@ -34,12 +34,32 @@
             <input type="file" id="hi_html_viewer_open_file_input" style="display: none;" onchange="hi_html_viewer_open_file(this)">
         </div>
         <br>
-        <div id="hi_html_viewer_about">
+        <div id="hi_html_viewer_settings">
+            <span>是否强制UTF-8显示?</span>
+            <select id="hi_html_viewer_show_utf-8">
+                <option value="yes">yes</option>
+                <option value="no">no</option>
+            </select>
+            <br>
+            <br>
+            <span>查看更多信息:</span>
+            <button id="hi_html_viewer_about_show_button" title="About" onclick="hi_html_viewer_about_show()">About hi html viewer</button>
+        </div>
+        <dialog id="hi_html_viewer_about" close>
+            <span>About</span>
+            <button id="hi_html_viewer_about_hide_button" title="关闭窗口" onclick="hi_html_viewer_about_hide()" style="float:right;">🗙</button>
+            <br>
+            <div style="border-bottom: 1px solid var(--hi_html_viewer-main-color);margin-top: 8px;"></div>
             <h3>hi html viewer</h3>
             <p>这是一个比较简单的html查看器</p>
-            <p>版本:v1.3</p>
+            <p>版本:v1.3.2</p>
             <button title="访问仓库" onclick="window.open('https:github.com/oneblockh/hi-html-viewer')">访问仓库</button>
-        </div>
+            <span>|</span>
+            <button title="访问版本库" onclick="window.open('https:github.com/oneblockh/hi-html-viewer/releases')">访问版本库</button>
+            <br>
+            <div style="border-bottom: 1px solid var(--hi_html_viewer-main-color);margin-top: 11px;margin-bottom: 11px;"></div>
+            <button id="hi_html_viewer_about_hide_button" title="关闭窗口" onclick="hi_html_viewer_about_hide()" style="width: 100%;">关闭窗口</button>
+        </dialog>
     </div>
 </header>
 <iframe id="hi_html_viewer_main_preview" title="hi html viewer" frameBorder="0" width="100%" height="100%" sandbox="allow-scripts allow-modals allow-forms allow-popups allow-top-navigation-by-user-activation allow-same-origin" src="data:text/html;text," role="main"></iframe>
