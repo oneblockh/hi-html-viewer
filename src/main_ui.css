@@ -123,7 +123,7 @@ body{
     background-color: var(--hi_html_viewer-glass-color);
     color:var(--hi_html_viewer-main-color);
     border: 1px solid transparent;
-    backdrop-filter:blur(0.3px) saturate(125%) url(#glass_side);
+    backdrop-filter:blur(1.1px) saturate(125%) url(#glass_side);
     border-radius: 19px;
     box-shadow: var(--hi_html_viewer-line-shadow);
     transition: var(--hi_html_viewer-transition-action);
