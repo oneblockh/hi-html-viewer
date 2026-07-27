@@ -38,6 +38,7 @@ body{
     padding: 12px 19px;
     gap: 6px;
     display: flex;
+    opacity:1;
 }
 
 #hi_html_viewer_menu{
@@ -129,16 +130,47 @@ body{
     transition: var(--hi_html_viewer-transition-action);
 }
 
-#hi_html_viewer_show_utf-8{
+#hi_html_viewer_about_show_button{
+    padding: 3px;
+    width: 145px;
+}
+
+#hi_html_viewer_show_utf-8,#hi_html_viewer_show_top_side{
     background-color: transparent;
     box-shadow: var(--hi_html_viewer-line-shadow);
     border-radius: 19px;
     color:var(--hi_html_viewer-main-color);
+    border: 2px solid transparent;
     transition:var(--hi_html_viewer-transition-action);
     padding: 3px;
     width: 200px;
 }
 
-#hi_html_viewer_show_utf-8 option{
+#hi_html_viewer_show_utf-8 option,#hi_html_viewer_show_top_side option{
     color: black;
+}
+
+#hi_html_viewer_show_utf-8:hover,#hi_html_viewer_show_top_side:hover{
+    box-shadow: 0 0 5px 2px rgba(199,199,199,0.25);
+    border:2px solid var(--hi_html_viewer-main-color);
+}
+
+#hi_html_viewer_menu_side button{
+    display: flex;
+}
+
+#hi_html_viewer_menu_side button svg{
+    width: 22px;
+    height: 22px;
+    margin-left: 5px;
+}
+
+#hi_html_viewer_top_side button svg{
+    width: 16px;
+    height: 16px;
+    padding: 1px;
+}
+
+#hi_html_viewer_menu_side button svg g g,#hi_html_viewer_top_side button svg g g{
+    stroke: var(--hi_html_viewer-main-color);
 }
