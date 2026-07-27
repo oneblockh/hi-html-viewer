@@ -8,7 +8,8 @@
     <meta name="robots" content="noindex,nofollow">
     <link type="text/css" rel="stylesheet" href="src/theme_config.css">
     <link type="text/css" rel="stylesheet" href="src/main_ui.css">
-    <script type="text/javascript" src="src/button.js"></script>
+    <script type="text/javascript" src="src/main_function.js"></script>
+    <script type="text/javascript" src="src/add_render.js"></script>
     <svg style="display: none"><filter id="glass_side"><feTurbulence type="turbulence" baseFrequency="0.00225" numOctaves="2" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="77" /></filter></svg>
 </head>
 <body>
@@ -35,10 +36,18 @@
         </div>
         <br>
         <div id="hi_html_viewer_settings">
-            <span>是否强制UTF-8显示?</span>
+            <span>是否在链接的内容转换UTF-8字符?</span>
             <select id="hi_html_viewer_show_utf-8">
-                <option value="yes">yes</option>
-                <option value="no">no</option>
+                <option value="yes" selected>转换</option>
+                <option value="no">不转换</option>
+            </select>
+            <br>
+            <br>
+            <span>是否透明化顶部栏和菜单栏?</span>
+            <select id="hi_html_viewer_show_top_side">
+                <option value="yes">透明</option>
+                <option value="more">更透明</option>
+                <option value="no" selected>不透明</option>
             </select>
             <br>
             <br>
@@ -52,7 +61,7 @@
             <div style="border-bottom: 1px solid var(--hi_html_viewer-main-color);margin-top: 8px;"></div>
             <h3>hi html viewer</h3>
             <p>这是一个比较简单的html查看器</p>
-            <p>版本:v1.3.2</p>
+            <p>版本:v1.4</p>
             <button title="访问仓库" onclick="window.open('https:github.com/oneblockh/hi-html-viewer')">访问仓库</button>
             <span>|</span>
             <button title="访问版本库" onclick="window.open('https:github.com/oneblockh/hi-html-viewer/releases')">访问版本库</button>
