@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@tauri-apps/plugin-opener':
-        specifier: ^2.5.4
+        specifier: ~2.5.4
         version: 2.5.4
     devDependencies:
       '@tauri-apps/cli':

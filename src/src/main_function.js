@@ -130,7 +130,9 @@ function hi_html_viewer_clean(){
   hi_html_viewer_url_list = [];
   hi_html_viewer_url_list_number=0;
   const iframe = document.getElementById('hi_html_viewer_main_preview');
-  iframe.src = "data:text;text,"
+  const input_code = document.getElementById('hi_html_viewer_text_url');
+  iframe.src = "data:text;text,";
+  input_code.value ="";
 }
 
 function hi_html_viewer_url(){
@@ -181,7 +183,27 @@ function hi_html_viewer_input_code(){
   }
 }
 
-
+async function hi_html_viewer_clipboard_code(){
+  const iframe = document.getElementById('hi_html_viewer_main_preview');
+  const input_code = document.getElementById('hi_html_viewer_text_url');
+  let clipboard_code;
+  try{
+    const code = await navigator.clipboard.readText();
+    if (code ==""){return}
+    clipboard_code=code
+  } catch (err){return}
+  let default_code_config = "data:text/html;charset=utf-8;base64,"
+  if (hi_html_viewer_show_text_unicode ==0){default_code_config = "data:text/html;base64,"}
+  url = default_code_config+hi_html_viewer_base64(clipboard_code);
+  if (url !== default_code_config+"bnVsbA==") {
+    hi_html_viewer_url_list.slice(0,hi_html_viewer_url_list_number+1);
+    hi_html_viewer_url_list_number=hi_html_viewer_url_list.length;
+    hi_html_viewer_url_list_number=hi_html_viewer_url_list_number+=1
+    hi_html_viewer_url_list.push(url);
+    iframe.src = url;
+    input_code.value =url;
+  }
+}
 
 //下面的这个函数别删！！！
 //这一个函数可以减少一些代码过长打不开的问题
@@ -228,21 +250,64 @@ document.addEventListener('DOMContentLoaded', function () {
       else{
           top_side.style.opacity="1"
       }
+    } else{
+      top_side.style.opacity="1"
     }
   });
 })
 
 
 
-//这是关于界面的窗口,一般用于展示版本信息
-function hi_html_viewer_about_show(){
-  const app_about = document.getElementById('hi_html_viewer_about');
+//这个是深色主题的切换
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("hi_html_viewer_choose_theme").addEventListener("change", function () {
+    const app_main_theme = document.documentElement;
+    const value_option = this.value;
+    if (value_option !== "") {
+      if(value_option =="system-theme"){
+        app_main_theme.removeAttribute("hi-html-viewer-app-theme");
+      } else if(value_option =="light-theme"){
+        app_main_theme.setAttribute("hi-html-viewer-app-theme","light");
+      } else if(value_option =="dark-theme"){
+        app_main_theme.setAttribute("hi-html-viewer-app-theme","dark");
+      } else{
+        app_main_theme.removeAttribute("hi-html-viewer-app-theme");
+      }
+    } else{
+        app_main_theme.removeAttribute("hi-html-viewer-app-theme");
+    }
+  });
+})
+
+
+
+//这是选项界面的窗口
+function hi_html_viewer_option_show(){
+  const app_about = document.getElementById('hi_html_viewer_option');
   app_about.showModal();
 }
-function hi_html_viewer_about_hide(){
-  const app_about = document.getElementById('hi_html_viewer_about');
+
+function hi_html_viewer_option_hide(){
+  const app_about = document.getElementById('hi_html_viewer_option');
   app_about.close();
 }
+
+function hi_html_viewer_option_open_repository() {
+  if (window.__TAURI__) {
+  window.__TAURI__.opener.openUrl("https://github.com/oneblockh/hi-html-viewer");
+  } else{
+    window.open("https://github.com/oneblockh/hi-html-viewer")
+  }
+};
+
+function hi_html_viewer_option_open_releases() {
+  if (window.__TAURI__) {
+  window.__TAURI__.opener.openUrl("https://github.com/oneblockh/hi-html-viewer/releases");
+  } else{
+    window.open("https://github.com/oneblockh/hi-html-viewer/releases")
+  }
+};
+
 
 
 

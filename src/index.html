@@ -10,7 +10,6 @@
     <link type="text/css" rel="stylesheet" href="src/main_ui.css">
     <script type="text/javascript" src="src/main_function.js"></script>
     <script type="text/javascript" src="src/add_render.js"></script>
-    <svg style="display: none"><filter id="glass_side"><feTurbulence type="turbulence" baseFrequency="0.00225" numOctaves="2" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="77" /></filter></svg>
 </head>
 <body>
 <header id="hi_html_viewer_side" role="banner">
@@ -32,42 +31,57 @@
             <button id="hi_html_viewer_copy-url_button" title="复制URL" onclick="hi_html_viewer_copy_url()">复制URL</button>
             <button id="hi_html_viewer_copy-file_button" title="拷贝文件" onclick="hi_html_viewer_copy_file()">拷贝文件</button>
             <button id="hi_html_viewer_input-code_button" title="输入代码" onclick="hi_html_viewer_input_code()">输入代码</button>
+            <button id="hi_html_viewer_clipboard-code_button" title="粘贴代码" onclick="hi_html_viewer_clipboard_code()">粘贴代码</button>
+            <button id="hi_html_viewer_option_show_button" title="选项..." onclick="hi_html_viewer_option_show()">选项...</button>
             <input type="file" id="hi_html_viewer_open_file_input" style="display: none;" onchange="hi_html_viewer_open_file(this)">
         </div>
-        <br>
-        <div id="hi_html_viewer_settings">
-            <span>是否在链接的内容转换UTF-8字符?</span>
-            <select id="hi_html_viewer_show_utf-8">
-                <option value="yes" selected>转换</option>
-                <option value="no">不转换</option>
-            </select>
-            <br>
-            <br>
-            <span>是否透明化顶部栏和菜单栏?</span>
-            <select id="hi_html_viewer_show_top_side">
-                <option value="yes">透明</option>
-                <option value="more">更透明</option>
-                <option value="no" selected>不透明</option>
-            </select>
-            <br>
-            <br>
-            <span>查看更多信息:</span>
-            <button id="hi_html_viewer_about_show_button" title="About" onclick="hi_html_viewer_about_show()">About hi html viewer</button>
-        </div>
-        <dialog id="hi_html_viewer_about" close>
-            <span>About</span>
-            <button id="hi_html_viewer_about_hide_button" title="关闭窗口" onclick="hi_html_viewer_about_hide()" style="float:right;">🗙</button>
+        <dialog id="hi_html_viewer_option" close>
+            <span>选项</span>
+            <button id="hi_html_viewer_option_hide_button" title="关闭窗口" onclick="hi_html_viewer_option_hide()" style="float:right;">🗙</button>
             <br>
             <div style="border-bottom: 1px solid var(--hi_html_viewer-main-color);margin-top: 8px;"></div>
-            <h3>hi html viewer</h3>
-            <p>这是一个比较简单的html查看器</p>
-            <p>版本:v1.4</p>
-            <button title="访问仓库" onclick="window.open('https:github.com/oneblockh/hi-html-viewer')">访问仓库</button>
-            <span>|</span>
-            <button title="访问版本库" onclick="window.open('https:github.com/oneblockh/hi-html-viewer/releases')">访问版本库</button>
-            <br>
+            <input type="radio" id="hi_html_viewer_option_settings_button" name="option_page" value="hi_html_viewer_option_settings_button" checked>
+            <label for="hi_html_viewer_option_settings_button" id="hi_html_viewer_option_choose_settings_button">设置</label>
+            <input type="radio" id="hi_html_viewer_option_about_button" name="option_page" value="hi_html_viewer_option_about_button">
+            <label for="hi_html_viewer_option_about_button" id="hi_html_viewer_option_choose_about_button">关于</label>
+            <div style="border-bottom: 1px solid var(--hi_html_viewer-main-color);margin-top: 8px;"></div>
+            <div id="hi_html_viewer_option_settings">
+                <h2>设置</h2>
+                <span>链接的内容转换成UTF-8字符:</span>
+                <select id="hi_html_viewer_show_utf-8">
+                    <option value="yes" selected>转换</option>
+                    <option value="no">不转换</option>
+                </select>
+                <br>
+                <br>
+                <span>顶部栏和菜单栏的透明化:</span>
+                <select id="hi_html_viewer_show_top_side">
+                    <option value="yes">透明</option>
+                    <option value="more">更透明</option>
+                    <option value="no" selected>不透明</option>
+                </select>
+                <br>
+                <br>
+                <span>应用主题偏好:</span>
+                <select id="hi_html_viewer_choose_theme">
+                    <option value="system-theme" selected>系统主题</option>
+                    <option value="light-theme">浅色主题</option>
+                    <option value="dark-theme">深色主题</option>
+                </select>
+                <br>
+                <br>
+            </div>
+            <div id="hi_html_viewer_option_about">
+                <h2>关于</h2>
+                <h3>hi html viewer</h3>
+                <p>这是一个比较简单的html查看器</p>
+                <p>版本:v1.5</p>
+                <button title="访问仓库" onclick="hi_html_viewer_option_open_repository()">访问仓库</button>
+                <span>|</span>
+                <button title="访问版本库" onclick="hi_html_viewer_option_open_releases()">访问版本库</button>
+            </div>
             <div style="border-bottom: 1px solid var(--hi_html_viewer-main-color);margin-top: 11px;margin-bottom: 11px;"></div>
-            <button id="hi_html_viewer_about_hide_button" title="关闭窗口" onclick="hi_html_viewer_about_hide()" style="width: 100%;">关闭窗口</button>
+            <button id="hi_html_viewer_option_hide_button" title="关闭窗口" onclick="hi_html_viewer_option_hide()" style="width: 100%;">关闭窗口</button>
         </dialog>
     </div>
 </header>
