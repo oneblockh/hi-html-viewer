@@ -48,21 +48,21 @@ function hi_html_viewer_app_language_config() {
     fetch('svg/full_screen.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_full-screen_button').innerHTML = svg);
     document.getElementById('hi_html_viewer_full-screen_button').title=hi_html_viewer_ui_top_side_language[5]
     //这是一些菜单栏
-    fetch('svg/open_file.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_open-file_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[0]+"</span>");
+    fetch('svg/open_file.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_open-file_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[0]+"</span>").catch(document.getElementById('hi_html_viewer_open-file_button').innerHTML = "<span>"+hi_html_viewer_ui_menu_language[0]+"</span>");
     document.getElementById('hi_html_viewer_open-file_button').title=hi_html_viewer_ui_menu_language[0]
-    fetch('svg/clean_content.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_clean_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[1]+"</span>");
+    fetch('svg/clean_content.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_clean_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[1]+"</span>").catch(document.getElementById('hi_html_viewer_clean_button').innerHTML = "<span>"+hi_html_viewer_ui_menu_language[1]+"</span>");
     document.getElementById('hi_html_viewer_clean_button').title=hi_html_viewer_ui_menu_language[1]
-    fetch('svg/input_url.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_url_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[2]+"</span>");
+    fetch('svg/input_url.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_url_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[2]+"</span>").catch(document.getElementById('hi_html_viewer_url_button').innerHTML = "<span>"+hi_html_viewer_ui_menu_language[2]+"</span>");
     document.getElementById('hi_html_viewer_url_button').title=hi_html_viewer_ui_menu_language[2]
-    fetch('svg/copy_url.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_copy-url_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[3]+"</span>");
+    fetch('svg/copy_url.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_copy-url_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[3]+"</span>").catch(document.getElementById('hi_html_viewer_copy-url_button').innerHTML = "<span>"+hi_html_viewer_ui_menu_language[3]+"</span>");
     document.getElementById('hi_html_viewer_copy-url_button').title=hi_html_viewer_ui_menu_language[3]
-    fetch('svg/copy_html.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_copy-file_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[4]+"</span>");
+    fetch('svg/copy_html.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_copy-file_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[4]+"</span>").catch(document.getElementById('hi_html_viewer_copy-file_button').innerHTML = "<span>"+hi_html_viewer_ui_menu_language[4]+"</span>");
     document.getElementById('hi_html_viewer_copy-file_button').title=hi_html_viewer_ui_menu_language[4]
-    fetch('svg/input_code.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_input-code_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[5]+"</span>");
+    fetch('svg/input_code.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_input-code_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[5]+"</span>").catch(document.getElementById('hi_html_viewer_input-code_button').innerHTML = "<span>"+hi_html_viewer_ui_menu_language[5]+"</span>");
     document.getElementById('hi_html_viewer_input-code_button').title=hi_html_viewer_ui_menu_language[5]
-    fetch('svg/clipboard_code.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_clipboard-code_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[6]+"</span>");
+    fetch('svg/clipboard_code.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_clipboard-code_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[6]+"</span>").catch(document.getElementById('hi_html_viewer_clipboard-code_button').innerHTML = "<span>"+hi_html_viewer_ui_menu_language[6]+"</span>");
     document.getElementById('hi_html_viewer_clipboard-code_button').title=hi_html_viewer_ui_menu_language[6]
-    fetch('svg/option_settings.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_option_show_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[7]+"</span>");
+    fetch('svg/option_settings.svg').then(r => r.text()).then(svg => document.getElementById('hi_html_viewer_option_show_button').innerHTML = svg+"&ensp;<span>"+hi_html_viewer_ui_menu_language[7]+"</span>").catch(document.getElementById('hi_html_viewer_option_show_button').innerHTML = "<span>"+hi_html_viewer_ui_menu_language[7]+"</span>");
     document.getElementById('hi_html_viewer_option_show_button').title=hi_html_viewer_ui_menu_language[7]
     //这是一些选项
     document.getElementById('hi_html_viewer_option_title').innerHTML=hi_html_viewer_ui_option_language[0]
