@@ -10,7 +10,7 @@ hi_html_viewer_url_list_number=0;
 
 
 //输入链接(url)
-//还有一个输入链接的按钮,打开文件的按钮也有一些
+//还有一个输入链接的按钮,打开文件和输入代码和粘贴代码的按钮也有一些
 document.addEventListener('DOMContentLoaded', function () {
 const input_url  = document.getElementById('hi_html_viewer_text_url');
 const iframe = document.getElementById('hi_html_viewer_main_preview');
@@ -58,7 +58,7 @@ function hi_html_viewer_refresh_frame() {
     iframe.contentWindow.location.replace(iframe.src);
 }
 
-//菜单显示和隐藏
+//菜单栏的显示和隐藏
 function hi_html_viewer_menu_show() {
   const menu = document.getElementById('hi_html_viewer_menu');
   menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
@@ -302,6 +302,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+//这个是框架透明化
+//background-color: var(--hi_html_viewer-app-backgorund-glass-color);
+document.addEventListener('DOMContentLoaded', function () {
+  let hi_html_viewer_backgorund_transparent_storage = localStorage.getItem("hi_html_viewer_backgorund_transparent_storage");
+  const background_transparent= document.getElementById('hi_html_viewer_main_preview');
+  if(hi_html_viewer_backgorund_transparent_storage =="yes"){
+    background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
+    localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
+    document.getElementById("hi_html_viewer_backgorund_transparent").value ="yes"
+  } else if(hi_html_viewer_backgorund_transparent_storage =="no"){
+    background_transparent.style.backgroundColor="rgba(175,175,175,0.99)"
+    localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","no");
+    document.getElementById("hi_html_viewer_backgorund_transparent").value ="no"
+  } else{
+    background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
+    localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
+    document.getElementById("hi_html_viewer_backgorund_transparent").value ="yes"
+  }
+  document.getElementById('hi_html_viewer_backgorund_transparent').addEventListener('change', function () {
+    const background_transparent= document.getElementById('hi_html_viewer_main_preview');
+    const value_option = this.value;
+    if (value_option !== "") {
+      if(value_option =="yes"){
+        background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
+        localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes")
+      } else if(value_option =="no"){
+          background_transparent.style.backgroundColor="rgba(175,175,175,0.99)"
+          localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","no");
+      } else{
+          background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
+          localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
+      }
+    } else{
+        background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
+        localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
+    }
+  });
+})
+
+
+
 //这个是深色主题的切换
 //主题文件在"theme_config.css"里
 document.addEventListener("DOMContentLoaded", function () {
@@ -350,48 +391,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-//这个是背景是透明化
-//background-color: var(--hi_html_viewer-app-backgorund-glass-color);
-document.addEventListener('DOMContentLoaded', function () {
-  let hi_html_viewer_backgorund_transparent_storage = localStorage.getItem("hi_html_viewer_theme_storage");
-  const background_transparent= document.getElementById('hi_html_viewer_main_preview');
-  if(hi_html_viewer_backgorund_transparent_storage =="yes"){
-    background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
-    localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
-    document.getElementById("hi_html_viewer_backgorund_transparent").value ="yes"
-  } else if(hi_html_viewer_backgorund_transparent_storage =="no"){
-    background_transparent.style.backgroundColor="rgba(175,175,175,0.99)"
-    localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","no");
-    document.getElementById("hi_html_viewer_backgorund_transparent").value ="no"
-  } else{
-    background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
-    localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
-    document.getElementById("hi_html_viewer_backgorund_transparent").value ="yes"
-  }
-  document.getElementById('hi_html_viewer_backgorund_transparent').addEventListener('change', function () {
-    const background_transparent= document.getElementById('hi_html_viewer_main_preview');
-    const value_option = this.value;
-    if (value_option !== "") {
-      if(value_option =="yes"){
-        background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
-        localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes")
-      } else if(value_option =="no"){
-          background_transparent.style.backgroundColor="rgba(175,175,175,0.99)"
-          localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
-      } else{
-          background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
-          localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
-      }
-    } else{
-        background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
-        localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
-    }
-  });
-})
-
-
-
 //这个是语言切换的选项
+//语言配置文件在"add_render.js"里
 document.addEventListener('DOMContentLoaded', function () {
   const lang = navigator.language || navigator.userLanguage;
   let hi_html_viewer_language_storage = localStorage.getItem("hi_html_viewer_language_storage");
@@ -454,7 +455,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function hi_html_viewer_app_data_clean(){
   localStorage.removeItem("hi_html_viewer_utf-8_storage")
   localStorage.removeItem("hi_html_viewer_show_bar_transparent_storage")
-  localStorage.removeItem("hi_html_viewer_theme_storage")
+  localStorage.removeItem("hi_html_viewer_backgorund_transparent_storage")
   localStorage.removeItem("hi_html_viewer_theme_storage")
   localStorage.removeItem("hi_html_viewer_language_storage")
   localStorage.clear()
@@ -486,7 +487,6 @@ function hi_html_viewer_option_open_releases() {
     window.open("https://github.com/oneblockh/hi-html-viewer/releases")
   }
 };
-
 
 
 
