@@ -218,16 +218,36 @@ function hi_html_viewer_base64(str) {
 //下面的变量别删！！！
 hi_html_viewer_show_text_unicode=1
 document.addEventListener('DOMContentLoaded', function () {
+  let hi_html_viewer_show_utf_storage = localStorage.getItem("hi_html_viewer_utf-8_storage");
+  if(hi_html_viewer_show_utf_storage =="yes"){
+      hi_html_viewer_show_text_unicode=1
+      localStorage.setItem("hi_html_viewer_utf-8_storage","yes");
+      document.getElementById("hi_html_viewer_show_utf-8").value ="yes"
+    } else if(hi_html_viewer_show_utf_storage =="no"){
+        hi_html_viewer_show_text_unicode=0
+        localStorage.setItem("hi_html_viewer_utf-8_storage","no");
+        document.getElementById("hi_html_viewer_show_utf-8").value ="no"
+    } else{
+        hi_html_viewer_show_text_unicode=1
+        localStorage.setItem("hi_html_viewer_utf-8_storage","yes");
+        document.getElementById("hi_html_viewer_show_utf-8").value ="yes"
+    }
   document.getElementById('hi_html_viewer_show_utf-8').addEventListener('change', function () {
     const value_option = this.value;
     if (value_option !== "") {
-    if(value_option =="yes"){
-      hi_html_viewer_show_text_unicode=1
-    } else if(value_option =="no"){
-        hi_html_viewer_show_text_unicode=0
+      if(value_option =="yes"){
+        hi_html_viewer_show_text_unicode=1
+        localStorage.setItem("hi_html_viewer_utf-8_storage","yes");
+      } else if(value_option =="no"){
+          hi_html_viewer_show_text_unicode=0
+          localStorage.setItem("hi_html_viewer_utf-8_storage","no");
+      } else{
+          hi_html_viewer_show_text_unicode=1
+          localStorage.setItem("hi_html_viewer_utf-8_storage","yes");
+      }
     } else{
         hi_html_viewer_show_text_unicode=1
-    }
+        localStorage.setItem("hi_html_viewer_utf-8_storage","yes");
     }
   });
 })
@@ -236,22 +256,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //这是透明化顶部栏和菜单栏的
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('hi_html_viewer_show_top_side').addEventListener('change', function () {
+  let hi_html_viewer_show_bar_transparent_storage = localStorage.getItem("hi_html_viewer_show_bar_transparent_storage");
+  const top_side= document.getElementById('hi_html_viewer_side');
+  if(hi_html_viewer_show_bar_transparent_storage =="yes"){
+      top_side.style.opacity="0.5"
+      localStorage.setItem("hi_html_viewer_show_bar_transparent_storage","yes");
+      document.getElementById("hi_html_viewer_top_side_transparent").value ="yes"
+    } else if(hi_html_viewer_show_bar_transparent_storage =="more"){
+        top_side.style.opacity="0.25"
+        localStorage.setItem("hi_html_viewer_show_bar_transparent_storage","more");
+        document.getElementById("hi_html_viewer_top_side_transparent").value ="more"
+    } else if(hi_html_viewer_show_bar_transparent_storage =="no"){
+        top_side.style.opacity="1"
+        localStorage.setItem("hi_html_viewer_show_bar_transparent_storage","no");
+        document.getElementById("hi_html_viewer_top_side_transparent").value ="no"
+    } else{
+        top_side.style.opacity="1"
+        localStorage.setItem("hi_html_viewer_show_bar_transparent_storage","no");
+        document.getElementById("hi_html_viewer_top_side_transparent").value ="no"
+    }
+  document.getElementById('hi_html_viewer_top_side_transparent').addEventListener('change', function () {
     const top_side= document.getElementById('hi_html_viewer_side');
     const value_option = this.value;
     if (value_option !== "") {
       if(value_option =="yes"){
         top_side.style.opacity="0.5"
+        localStorage.setItem("hi_html_viewer_show_bar_transparent_storage","yes")
       } else if(value_option =="more"){
           top_side.style.opacity="0.25"
+          localStorage.setItem("hi_html_viewer_show_bar_transparent_storage","more")
       } else if(value_option =="no"){
           top_side.style.opacity="1"
+          localStorage.setItem("hi_html_viewer_show_bar_transparent_storage","no")
       }
       else{
           top_side.style.opacity="1"
+          localStorage.setItem("hi_html_viewer_show_bar_transparent_storage","no")
       }
     } else{
       top_side.style.opacity="1"
+      localStorage.setItem("hi_html_viewer_show_bar_transparent_storage","no")
     }
   });
 })
@@ -259,27 +303,162 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 //这个是深色主题的切换
+//主题文件在"theme_config.css"里
 document.addEventListener("DOMContentLoaded", function () {
+  let hi_html_viewer_theme_storage = localStorage.getItem("hi_html_viewer_theme_storage");
+  const app_main_theme = document.documentElement;
+  if(hi_html_viewer_theme_storage =="system-theme"){
+      app_main_theme.removeAttribute("hi-html-viewer-app-theme");
+      localStorage.setItem("hi_html_viewer_theme_storage","system-theme");
+      document.getElementById("hi_html_viewer_choose_theme").value ="system-theme"
+    } else if(hi_html_viewer_theme_storage =="light-theme"){
+        app_main_theme.setAttribute("hi-html-viewer-app-theme","light");
+        localStorage.setItem("hi_html_viewer_theme_storage","light-theme");
+        document.getElementById("hi_html_viewer_choose_theme").value ="light-theme"
+    } else if(hi_html_viewer_theme_storage =="dark-theme"){
+        app_main_theme.setAttribute("hi-html-viewer-app-theme","dark");
+        localStorage.setItem("hi_html_viewer_theme_storage","dark-theme");
+        document.getElementById("hi_html_viewer_choose_theme").value ="dark-theme"
+    } else{
+        app_main_theme.removeAttribute("hi-html-viewer-app-theme");
+        localStorage.setItem("hi_html_viewer_theme_storage","system-theme");
+        document.getElementById("hi_html_viewer_choose_theme").value ="system-theme"
+    }
   document.getElementById("hi_html_viewer_choose_theme").addEventListener("change", function () {
     const app_main_theme = document.documentElement;
     const value_option = this.value;
     if (value_option !== "") {
       if(value_option =="system-theme"){
         app_main_theme.removeAttribute("hi-html-viewer-app-theme");
+        localStorage.setItem("hi_html_viewer_theme_storage","system-theme")
       } else if(value_option =="light-theme"){
         app_main_theme.setAttribute("hi-html-viewer-app-theme","light");
+        localStorage.setItem("hi_html_viewer_theme_storage","light-theme")
       } else if(value_option =="dark-theme"){
         app_main_theme.setAttribute("hi-html-viewer-app-theme","dark");
+        localStorage.setItem("hi_html_viewer_theme_storage","dark-theme")
       } else{
         app_main_theme.removeAttribute("hi-html-viewer-app-theme");
+        localStorage.setItem("hi_html_viewer_theme_storage","system-theme")
       }
     } else{
         app_main_theme.removeAttribute("hi-html-viewer-app-theme");
+        localStorage.setItem("hi_html_viewer_theme_storage","system-theme")
     }
   });
 })
 
 
+
+//这个是背景是透明化
+//background-color: var(--hi_html_viewer-app-backgorund-glass-color);
+document.addEventListener('DOMContentLoaded', function () {
+  let hi_html_viewer_backgorund_transparent_storage = localStorage.getItem("hi_html_viewer_theme_storage");
+  const background_transparent= document.getElementById('hi_html_viewer_main_preview');
+  if(hi_html_viewer_backgorund_transparent_storage =="yes"){
+    background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
+    localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
+    document.getElementById("hi_html_viewer_backgorund_transparent").value ="yes"
+  } else if(hi_html_viewer_backgorund_transparent_storage =="no"){
+    background_transparent.style.backgroundColor="rgba(175,175,175,0.99)"
+    localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","no");
+    document.getElementById("hi_html_viewer_backgorund_transparent").value ="no"
+  } else{
+    background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
+    localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
+    document.getElementById("hi_html_viewer_backgorund_transparent").value ="yes"
+  }
+  document.getElementById('hi_html_viewer_backgorund_transparent').addEventListener('change', function () {
+    const background_transparent= document.getElementById('hi_html_viewer_main_preview');
+    const value_option = this.value;
+    if (value_option !== "") {
+      if(value_option =="yes"){
+        background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
+        localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes")
+      } else if(value_option =="no"){
+          background_transparent.style.backgroundColor="rgba(175,175,175,0.99)"
+          localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
+      } else{
+          background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
+          localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
+      }
+    } else{
+        background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
+        localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
+    }
+  });
+})
+
+
+
+//这个是语言切换的选项
+document.addEventListener('DOMContentLoaded', function () {
+  const lang = navigator.language || navigator.userLanguage;
+  let hi_html_viewer_language_storage = localStorage.getItem("hi_html_viewer_language_storage");
+  if(hi_html_viewer_language_storage =="简体中文"){
+    hi_html_viewer_app_language_简体中文_config();
+    localStorage.setItem("hi_html_viewer_language_storage","简体中文");
+    document.getElementById("hi_html_viewer_app_language").value ="简体中文"
+    document.documentElement.lang ="zh"
+  } else if(hi_html_viewer_language_storage =="繁體中文"){
+        hi_html_viewer_app_language_繁體中文_config();
+        localStorage.setItem("hi_html_viewer_language_storage","繁體中文");
+        document.getElementById("hi_html_viewer_app_language").value ="繁體中文"
+        document.documentElement.lang ="zh"
+  } else if(hi_html_viewer_language_storage =="english"){
+      hi_html_viewer_app_language_english_config();
+      localStorage.setItem("hi_html_viewer_language_storage","english");
+      document.getElementById("hi_html_viewer_app_language").value ="english"
+      document.documentElement.lang ="en"
+  } else{
+      if(lang.startsWith('zh')){
+        hi_html_viewer_app_language_简体中文_config();
+        localStorage.setItem("hi_html_viewer_language_storage","简体中文");
+        document.getElementById("hi_html_viewer_app_language").value ="简体中文"
+        document.documentElement.lang ="zh"
+      } else{
+        hi_html_viewer_app_language_english_config();
+        localStorage.setItem("hi_html_viewer_language_storage","english");
+        document.getElementById("hi_html_viewer_app_language").value ="english"
+        document.documentElement.lang ="en"
+      }
+  }
+    document.getElementById('hi_html_viewer_app_language').addEventListener('change', function () {
+      const value_option = this.value;
+        if (value_option !== "") {
+          if(value_option =="简体中文"){
+              hi_html_viewer_app_language_简体中文_config();
+              localStorage.setItem("hi_html_viewer_language_storage","简体中文");
+              document.documentElement.lang ="zh"
+          } else if(value_option =="繁體中文"){
+              hi_html_viewer_app_language_繁體中文_config();
+              localStorage.setItem("hi_html_viewer_language_storage","繁體中文");
+              document.documentElement.lang ="zh"
+          } else if(value_option =="english"){
+              hi_html_viewer_app_language_english_config();
+              localStorage.setItem("hi_html_viewer_language_storage","english");
+              document.documentElement.lang ="en"
+          } else{
+              hi_html_viewer_app_language_english_config();
+              localStorage.setItem("hi_html_viewer_language_storage","english");
+              document.documentElement.lang ="en"
+          }
+        } else{
+            hi_html_viewer_app_language_english_config();
+            localStorage.setItem("hi_html_viewer_language_storage","english");
+            document.documentElement.lang ="en"
+        }
+    });
+})
+
+function hi_html_viewer_app_data_clean(){
+  localStorage.removeItem("hi_html_viewer_utf-8_storage")
+  localStorage.removeItem("hi_html_viewer_show_bar_transparent_storage")
+  localStorage.removeItem("hi_html_viewer_theme_storage")
+  localStorage.removeItem("hi_html_viewer_theme_storage")
+  localStorage.removeItem("hi_html_viewer_language_storage")
+  localStorage.clear()
+}
 
 //这是选项界面的窗口
 function hi_html_viewer_option_show(){

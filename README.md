@@ -34,6 +34,7 @@ hi html viewer是一个可以查看HTML文件的一个工具，基于tauri开发
 ### 🔨 构建应用
 
 ```bash
+pnpm install
 pnpm run tauri dev     # 开发模式
 pnpm tauri build       # 构建应用
 ```
