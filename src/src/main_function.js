@@ -78,24 +78,18 @@ document.addEventListener('DOMContentLoaded', function () {
 function hi_html_viewer_menu_full_screen(element) {
   const full_condition = document;
   const full_element = element || full_condition.documentElement;
-  if (!full_condition.fullscreenElement &&
-      !full_condition.webkitFullscreenElement &&
-      !full_condition.msFullscreenElement) {
+  if (!full_condition.fullscreenElement && !full_condition.webkitFullscreenElement){
     if (full_element.requestFullscreen) {
       full_element.requestFullscreen();
-    } else if (full_element.webkitRequestFullscreen) {
+    } else{
       full_element.webkitRequestFullscreen();
-    } else if (full_element.msRequestFullscreen) {
-      full_element.msRequestFullscreen();
     }
   }
   else {
     if (full_condition.exitFullscreen) {
       full_condition.exitFullscreen();
-    } else if (full_condition.webkitExitFullscreen) {
+    } else{
       full_condition.webkitExitFullscreen();
-    } else if (full_condition.msExitFullscreen) {
-      full_condition.msExitFullscreen();
     }
   }
 }
