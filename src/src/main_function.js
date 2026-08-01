@@ -509,7 +509,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (parent.clientWidth <500){
       app_max_width =0;
     } else{
-      app_max_width=0-(parent.clientWidth /1.6)-(parent.clientWidth /20)
+      app_max_width=0-(parent.clientWidth /1.65)-(parent.clientWidth /20)
     }
     app_side_top.style.left = Math.max(app_max_width, Math.min(side_x_y[2] + e.clientX - side_x_y[0], parent.clientWidth - app_side_top.offsetWidth)) + 'px';
     app_side_top.style.top = Math.max(0, Math.min(side_x_y[3] + e.clientY - side_x_y[1], parent.clientHeight - app_side_top.offsetHeight)) + 'px';
