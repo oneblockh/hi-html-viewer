@@ -457,13 +457,11 @@ function hi_html_viewer_app_data_clean(){
 
 //这是选项界面的窗口
 function hi_html_viewer_option_show(){
-  const app_about = document.getElementById('hi_html_viewer_option');
-  app_about.showModal();
+  document.getElementById('hi_html_viewer_option').showModal();
 }
 
 function hi_html_viewer_option_hide(){
-  const app_about = document.getElementById('hi_html_viewer_option');
-  app_about.close();
+  document.getElementById('hi_html_viewer_option').close();
 }
 
 function hi_html_viewer_option_open_repository() {
