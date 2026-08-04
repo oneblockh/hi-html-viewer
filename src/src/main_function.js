@@ -309,6 +309,10 @@ document.addEventListener('DOMContentLoaded', function () {
     background_transparent.style.backgroundColor="rgba(175,175,175,0.99)"
     localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","no");
     document.getElementById("hi_html_viewer_backgorund_transparent").value ="no"
+  }else if(hi_html_viewer_backgorund_transparent_storage =="more"){
+    background_transparent.style.backgroundColor="rgba(175,175,175,0.125)"
+    localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","more");
+    document.getElementById("hi_html_viewer_backgorund_transparent").value ="more"
   } else{
     background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
     localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
@@ -324,6 +328,9 @@ document.addEventListener('DOMContentLoaded', function () {
       } else if(value_option =="no"){
           background_transparent.style.backgroundColor="rgba(175,175,175,0.99)"
           localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","no");
+      }else if(value_option =="more"){
+          background_transparent.style.backgroundColor="rgba(175,175,175,0.125)"
+          localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","more");
       } else{
           background_transparent.style.backgroundColor="var(--hi_html_viewer-app-backgorund-glass-color)"
           localStorage.setItem("hi_html_viewer_backgorund_transparent_storage","yes");
@@ -387,6 +394,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //这个是语言切换的选项
 //语言配置文件在"add_render.js"里
+//hi_html_viewer_app_language_config()
 document.addEventListener('DOMContentLoaded', function () {
   const lang = navigator.language || navigator.userLanguage;
   let hi_html_viewer_language_storage = localStorage.getItem("hi_html_viewer_language_storage");

@@ -250,3 +250,9 @@ body{
 #hi_html_viewer_option input[type="radio"]:checked + label{
     border-bottom:2px solid var(--hi_html_viewer-main-color);
 }
+
+#hi_html_viewer_option_about button{
+    padding: 3px 7px;
+    margin-left: 3px;
+    margin-right: 3px;
+} 

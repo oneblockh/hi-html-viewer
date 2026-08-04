@@ -98,6 +98,7 @@ function hi_html_viewer_app_language_config() {
     document.getElementById("hi_html_viewer_choose_theme_select_option_3").innerHTML=hi_html_viewer_ui_option_settings_select_option_language[7]
     document.getElementById("hi_html_viewer_backgorund_transparent_select_option_1").innerHTML=hi_html_viewer_ui_option_settings_select_option_language[2]
     document.getElementById("hi_html_viewer_backgorund_transparent_select_option_2").innerHTML=hi_html_viewer_ui_option_settings_select_option_language[4]
+    document.getElementById("hi_html_viewer_backgorund_transparent_select_option_3").innerHTML=hi_html_viewer_ui_option_settings_select_option_language[3]
     document.getElementById("hi_html_viewer_app_data_clean").innerHTML=hi_html_viewer_ui_option_settings_select_option_language[8]
     //这是一些选项中的关于项目
     document.getElementById("hi_html_viewer_option_about_tag").innerHTML=hi_html_viewer_ui_option_about_language[0]
