@@ -1,6 +1,6 @@
 ### 📖 hi html viewer
 
-hi html viewer是一个可以查看HTML文件的一个工具，基于tauri开发，这个工具模仿了浏览器的界面样式，支持多种功能。
+hi html viewer是一个轻量多功能的HTML文件查看工具，这个工具模仿了浏览器的界面样式，支持多种功能。
 
 ### ✨ 特点
 
@@ -27,6 +27,10 @@ hi html viewer是一个可以查看HTML文件的一个工具，基于tauri开发
 ### 📦 安装
 
 可以从本仓库的Releases下载，或者下载源码构建。
+
+> [!NOTE]
+>
+> Releases里有桌面应用(tauri应用)和网页源码
 
 ### 🔨 构建应用
 
