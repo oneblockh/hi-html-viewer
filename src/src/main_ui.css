@@ -116,7 +116,7 @@ body{
     border:2px solid var(--hi_html_viewer-main-color);
 }
 
-#hi_html_viewer_show_utf-8,#hi_html_viewer_top_side_transparent,#hi_html_viewer_choose_theme,#hi_html_viewer_backgorund_transparent,#hi_html_viewer_app_language{
+#hi_html_viewer_show_utf-8,#hi_html_viewer_top_side_transparent,#hi_html_viewer_choose_theme,#hi_html_viewer_backgorund_transparent,#hi_html_viewer_app_language,#hi_html_viewer_backgorund_transparent_color{
     background-color: transparent;
     box-shadow: var(--hi_html_viewer-line-shadow);
     border-radius: 19px;
@@ -127,11 +127,11 @@ body{
     width: 200px;
 }
 
-#hi_html_viewer_show_utf-8 option,#hi_html_viewer_top_side_transparent option,#hi_html_viewer_choose_theme option,#hi_html_viewer_backgorund_transparent option,#hi_html_viewer_app_language option{
+#hi_html_viewer_show_utf-8 option,#hi_html_viewer_top_side_transparent option,#hi_html_viewer_choose_theme option,#hi_html_viewer_backgorund_transparent option,#hi_html_viewer_app_language option,#hi_html_viewer_backgorund_transparent_color option{
     color: black;
 }
 
-#hi_html_viewer_show_utf-8:hover,#hi_html_viewer_top_side_transparent:hover,#hi_html_viewer_choose_theme:hover,#hi_html_viewer_backgorund_transparent:hover,#hi_html_viewer_app_language:hover{
+#hi_html_viewer_show_utf-8:hover,#hi_html_viewer_top_side_transparent:hover,#hi_html_viewer_choose_theme:hover,#hi_html_viewer_backgorund_transparent:hover,#hi_html_viewer_app_language:hover,#hi_html_viewer_backgorund_transparent_color:hover{
     box-shadow: 0 0 5px 2px rgba(199,199,199,0.25);
     border:2px solid var(--hi_html_viewer-main-color);
 }
@@ -253,6 +253,4 @@ body{
 
 #hi_html_viewer_option_about button{
     padding: 3px 7px;
-    margin-left: 3px;
-    margin-right: 3px;
-} 
+}

@@ -344,6 +344,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  let hi_html_viewer_backgorund_transparent_color_storage = localStorage.getItem("hi_html_viewer_backgorund_transparent_color_storage");
+  const background_transparent= document.body;
+  if(hi_html_viewer_backgorund_transparent_color_storage =="yes"){
+    background_transparent.style.backgroundColor="var(--hi_html_viewer-background-color)"
+    localStorage.setItem("hi_html_viewer_backgorund_transparent_color_storage","yes");
+    document.getElementById("hi_html_viewer_backgorund_transparent_color").value ="yes"
+  } else if(hi_html_viewer_backgorund_transparent_color_storage =="no"){
+    background_transparent.style.backgroundColor="var(--hi_html_viewer-app-bg-color)"
+    localStorage.setItem("hi_html_viewer_backgorund_transparent_color_storage","no");
+    document.getElementById("hi_html_viewer_backgorund_transparent_color").value ="no"
+  } else{
+    background_transparent.style.backgroundColor="var(--hi_html_viewer-background-color)"
+    localStorage.setItem("hi_html_viewer_backgorund_transparent_color_storage","yes");
+    document.getElementById("hi_html_viewer_backgorund_transparent_color").value ="yes"
+  }
+  document.getElementById('hi_html_viewer_backgorund_transparent_color').addEventListener('change', function () {
+    const background_transparent= document.body;
+    const value_option = this.value;
+    if (value_option !== "") {
+      if(value_option =="yes"){
+        background_transparent.style.backgroundColor="var(--hi_html_viewer-background-color)"
+        localStorage.setItem("hi_html_viewer_backgorund_transparent_color_storage","yes")
+      } else if(value_option =="no"){
+          background_transparent.style.backgroundColor="var(--hi_html_viewer-app-bg-color)"
+          localStorage.setItem("hi_html_viewer_backgorund_transparent_color_storage","no");
+      }else{
+          background_transparent.style.backgroundColor="var(--hi_html_viewer-background-color)"
+          localStorage.setItem("hi_html_viewer_backgorund_transparent_color_storage","yes");
+      }
+    } else{
+        background_transparent.style.backgroundColor="var(--hi_html_viewer-background-color)"
+        localStorage.setItem("hi_html_viewer_backgorund_transparent_color_storage","yes");
+    }
+  });
+})
+
+
+
 //这个是深色主题的切换
 //主题文件在"theme_config.css"里
 document.addEventListener("DOMContentLoaded", function () {
