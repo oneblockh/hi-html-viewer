@@ -27,7 +27,7 @@ function hi_html_viewer_app_language_english_config(){
     hi_html_viewer_ui_menu_language=["Open file","Clean","Input URL","Copy URL","Copy file","Input code","Paste code","Option..."]
     hi_html_viewer_ui_top_side_language=["Left","Right","Refresh","Input URL","Menu","Full screen"]
     hi_html_viewer_ui_option_language=["Option","Preferences","About project","Close window"]
-    hi_html_viewer_ui_option_settings_language=["Preferences","Add UTF-8 attribute to the URL","Top bar and menu bar transparent","App theme","App frame transparent","language","Local storage","APP background transparent"]
+    hi_html_viewer_ui_option_settings_language=["Preferences","Add UTF-8 attribute to the URL","Top bar and menu bar transparent","App theme","App frame transparent","Language","Local storage","APP background transparent"]
     hi_html_viewer_ui_option_settings_select_option_language=["Add","NO add","Transparent","More transparent","NO transparent","System theme","Light theme","Dark theme","Clean local storage"]
     hi_html_viewer_ui_option_about_language=["About project","A simple HTML viewer","Visit repository","Visit releases"]
     hi_html_viewer_app_language_config()
